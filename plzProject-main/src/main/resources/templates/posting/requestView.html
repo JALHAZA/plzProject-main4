@@ -17,6 +17,7 @@
         <th>Status</th>
         <th>User Name</th>
         <th>Title</th>
+        <th>Delete</th>
       </tr>
       </thead>
 
@@ -29,10 +30,40 @@
         <td th:text="${request.status}">Request Status ID</td>
         <td th:text="${request.username}">User ID</td>
         <td th:text="${request.title}">Title</td>
+        <td>
+          <button type="button" class="btn btn-danger" th:attr="onclick='deleteRequest(' + ${request.requestId} + ')'">
+            삭제
+          </button>
+        </td>
       </tr>
       </tbody>
     </table>
 
   </div>
 </div>
+
+<script>
+  function deleteRequest(requestId) {
+    if (confirm("정말로 이 신청을 삭제하시겠습니까?")) {
+      fetch(`/request/delete/${requestId}`, {
+        method: 'DELETE'
+      })
+              .then(response => {
+                if (!response.ok) {
+                  throw new Error("삭제에 실패했습니다.");
+                }
+                return response.text();
+              })
+              .then(data => {
+                alert(data);
+                location.reload(); // 페이지 새로고침하여 리스트 업데이트
+              })
+              .catch(error => {
+                console.error("Error:", error);
+                alert("삭제하는 도중 문제가 발생했습니다.");
+              });
+    }
+  }
+</script>
+
 

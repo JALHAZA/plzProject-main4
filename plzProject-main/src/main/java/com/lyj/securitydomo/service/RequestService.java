@@ -11,4 +11,7 @@ public interface RequestService {
     void saveRequest(Request request);
 
     void saveRequest(long postId, String title, String content);
+
+    void deleteRequest(Long requestId);
+
 }

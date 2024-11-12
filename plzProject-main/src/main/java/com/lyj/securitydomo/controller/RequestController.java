@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
 
 import java.util.List;
 
@@ -44,5 +45,16 @@ public class RequestController {
         model.addAttribute("requests", requests);
         return "posting/requestView";
     }
+
+    @DeleteMapping("/delete/{requestId}")
+    public ResponseEntity<String> deleteRequest(@PathVariable Long requestId) {
+        try {
+            requestService.deleteRequest(requestId);
+            return ResponseEntity.ok("신청이 삭제되었습니다.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("삭제에 실패했습니다.");
+        }
+    }
+
 }
 

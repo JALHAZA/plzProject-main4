@@ -62,6 +62,11 @@ public class RequestServiceImpl implements RequestService {
         requestRepository.save(request);
     }
 
+    @Override
+    public void deleteRequest(Long requestId) {
+        requestRepository.deleteById(requestId);
+    }
+
 
 //    // 완료 상태로 업데이트
 //    public void markRequestAsCompleted(Long requestId) {
@@ -72,4 +77,6 @@ public class RequestServiceImpl implements RequestService {
 //        request.setRequestStatus(completedStatus);
 //        requestRepository.save(request);
 //    }
+
+
 }
