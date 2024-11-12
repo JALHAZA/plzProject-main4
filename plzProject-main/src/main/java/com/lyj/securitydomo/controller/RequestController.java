@@ -56,5 +56,13 @@ public class RequestController {
         }
     }
 
+    @GetMapping("/list/{postId}")
+    public String getRequestsByPostId(@PathVariable Long postId, Model model) {
+        List<RequestDTO> requests = requestService.getRequestsByPostId(postId);
+        model.addAttribute("requests", requests);
+        return "posting/requestList"; // 새로운 뷰 페이지 생성 필요
+    }
+
+
 }
 

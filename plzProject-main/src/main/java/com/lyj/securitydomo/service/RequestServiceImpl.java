@@ -67,6 +67,14 @@ public class RequestServiceImpl implements RequestService {
         requestRepository.deleteById(requestId);
     }
 
+    @Override
+    public List<RequestDTO> getRequestsByPostId(Long postId) {
+        return requestRepository.findRequestsByPostId(postId);
+    }
+
+
+
+
 
 //    // 완료 상태로 업데이트
 //    public void markRequestAsCompleted(Long requestId) {

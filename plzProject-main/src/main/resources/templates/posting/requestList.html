@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/basic.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>신청 목록</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container mt-5">
+        <h2>신청 목록</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Request ID</th>
+                <th>신청자</th>
+                <th>신청 제목</th>
+                <th>신청 내용</th>
+                <th>신청 날짜</th>
+                <th>상태</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="request : ${requests}">
+                <td th:text="${request.requestId}">Request ID</td>
+                <td th:text="${request.username}">신청자</td>
+                <td th:text="${request.title}">신청 제목</td>
+                <td th:text="${request.content}">신청 내용</td>
+                <td th:text="${request.regDate}">신청 날짜</td>
+                <td th:text="${request.status}">상태</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
+>

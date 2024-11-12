@@ -21,6 +21,8 @@ public class RequestDTO {
     private Date regDate;
     private Long requestStatusId;
     private String status;
+//    private String author;
+//    private String postStatus;
 
 //    public RequestDTO(Long requestId, String content, String username, String contentText, Date regDate,Long postId, Long requestStatusId, Long userId,String title) {
 //        this.requestId = requestId;
