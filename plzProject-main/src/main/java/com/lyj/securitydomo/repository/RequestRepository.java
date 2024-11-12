@@ -9,9 +9,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface RequestRepository extends JpaRepository<Request, Long> {
-    @Query("SELECT new com.lyj.securitydomo.dto.RequestDTO(r.requestId, r.post.postId, u.userId, r.title, r.content, u.username, p.contentText, r.regDate, r.requestStatus.requestStatusId) " +
+    @Query("SELECT new com.lyj.securitydomo.dto.RequestDTO(r.requestId, r.post.postId, u.userId, r.title, r.content, u.username, p.contentText, r.regDate, r.requestStatus.requestStatusId, rs.status) " +
             "FROM Request r " +
             "JOIN r.user u " +
-            "JOIN r.post p")
+            "JOIN r.post p " +
+            "JOIN r.requestStatus rs")
     List<RequestDTO> findAllRequestWithUserAndPostContent();
 }

@@ -20,6 +20,7 @@ public class RequestDTO {
     private String contentText;
     private Date regDate;
     private Long requestStatusId;
+    private String status;
 
 //    public RequestDTO(Long requestId, String content, String username, String contentText, Date regDate,Long postId, Long requestStatusId, Long userId,String title) {
 //        this.requestId = requestId;
